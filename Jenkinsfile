@@ -9,7 +9,7 @@ pipeline {
     }
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            junit '/Users/yash/HelloWorld/app/build/reports/**/*.xml'
         }
     }
 }
