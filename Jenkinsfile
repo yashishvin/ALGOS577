@@ -1,16 +1,27 @@
-/* Requires the Docker Pipeline plugin */
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('No-op') {
             steps {
-                sh '/Users/yash/HelloWorld/gradlew check'
+                sh 'ls'
             }
         }
     }
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            echo 'One way or another, I have finished'
+        }
+        success {
+            echo 'I succeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
         }
     }
 }
