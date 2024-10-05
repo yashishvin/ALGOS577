@@ -1,19 +1,10 @@
+/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent {
-        label '!windows'
-    }
-
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-    }
-
+    agent { docker { image 'maven:3.9.9-eclipse-temurin-21-alpine' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                echo "Database engine is ${DB_ENGINE}"
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                sh 'printenv'
+                sh 'mvn --version'
             }
         }
     }
