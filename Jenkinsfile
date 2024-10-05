@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh './gradlew check'
+                sh '/Users/yash/HelloWorld/gradlew check'
             }
         }
     }
